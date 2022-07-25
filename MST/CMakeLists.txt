@@ -51,7 +51,7 @@ add_subdirectory(iolib)
 
 
 # Find MPI Library
-find_package(MPI REQUIRED COMPONENTS CXX OPTIONAL_COMPONENTS)
+find_package(MPI REQUIRED COMPONENTS FORTRAN OPTIONAL_COMPONENTS)
 target_link_libraries(mst_main PUBLIC MPI)
 
 
@@ -62,8 +62,7 @@ if (BUILD_WITH_OPENMP)
     target_link_libraries(mst_main PUBLIC OpenMP::OpenMP_CXX)
 endif ()
 
-# Find LibXC
-find_package(Libxc REQUIRED)
+
 
 # Needed for gcc 10
 target_compile_options(mst_lib PUBLIC "-fallow-argument-mismatch")

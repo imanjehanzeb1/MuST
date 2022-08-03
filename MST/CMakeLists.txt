@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.22)
 
 cmake_host_system_information(RESULT num QUERY NUMBER_OF_PHYSICAL_CORES)
 
-# cmake_host_system_information(RESULT name QUERY DISTRIB_PRETTY_NAME)
+cmake_host_system_information(RESULT name QUERY DISTRIB_PRETTY_NAME)
 
 message(STATUS "Running CMake ${CMAKE_VERSION} for MST with max ${num} threads on ${name}")
 
@@ -18,7 +18,7 @@ include(CheckLanguage)
 check_language(CUDA)
 if(CMAKE_CUDA_COMPILER)
         enable_language(CUDA)
-	
+	message("CUDA compiler found, using CUDA")
 else()
         message(STATUS "No CUDA compiler found")
 endif()
@@ -69,8 +69,8 @@ option(BUILD_WITH_OPENMP "Build with OpenMP" ON)
 if (BUILD_WITH_OPENMP)
     find_package(OpenMP REQUIRED)
     target_link_libraries(mst_lib PUBLIC OpenMP::OpenMP_Fortran)
-    message("Using OpenMP (Fortran)")
     message(STATUS "OpenMP found: " "${OpenMP_Fortran_FOUND}")
+    message("Using OpenMP (Fortran)")
 endif()
 
 

@@ -21,7 +21,6 @@ target_sources(mst_lib
               LUdcmpModule.F90
               LegendreModule.F90
               MathParamModule.F90
-              MathieuModule.F90
               Matrix3dModule.F90
               MatrixDeterminantModule.F90
               MatrixInverseModule.F90
